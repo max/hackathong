@@ -17,6 +17,7 @@ writeSecret('USER_COOKIE_SECRET');
 writeSecret('COOKIE_SESSION_SECRET');
 
 writeVar('HEROKU_AUTH_URL', 'https://id.heroku.com');
+writeVar('API_HOST', 'api.heroku.com')
 
 writeVar('HEROKU_OAUTH_ID', '');
 writeVar('HEROKU_OAUTH_SECRET', '');

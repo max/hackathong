@@ -1,5 +1,6 @@
 express = require 'express'
 routes  = require './routes'
+api     = require './routes/api'
 http    = require 'http'
 path    = require 'path'
 bouncer = require './lib/bouncer'
@@ -27,6 +28,11 @@ if 'development' == app.get 'env'
   app.use express.errorHandler()
 
 app.get '/', routes.index
+
+app.get     '/api/*', api.api
+app.post    '/api/*', api.api
+app.put     '/api/*', api.api
+app.delete  '/api/*', api.api
 
 app.get '/login', (req, res) -> res.redirect '/auth/heroku'
 app.get '/logout', bouncer.logout
