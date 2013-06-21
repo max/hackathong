@@ -9,8 +9,10 @@
   <body>
     <h1>My Apps</h1>
 
+    <input ng-model="query">
+
     <ul ng-controller="AppListCtrl">
-      <li ng-repeat="app in apps">{{app.name}}</li>
+      <li ng-repeat="app in apps | filter:query">{{app.name}}</li>
     </ul>
   </body>
 
