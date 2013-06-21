@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+var https = require('https'),
+    fs    = require('fs');
+
+console.log('Creating or replacing .env file.')
+
+if (fs.existsSync('.env')) {
+  fs.unlinkSync('.env');
+}
+
+fs.writeFileSync('.env', '');
+
+
+writeSecret('USER_SESSION_ENCRYPTION_SECRET');
+writeSecret('USER_COOKIE_SECRET');
+writeSecret('COOKIE_SESSION_SECRET');
+
+writeVar('HEROKU_AUTH_URL', 'https://id.heroku.com');
+writeVar('API_HOST', 'api.heroku.com')
+
+writeVar('HEROKU_OAUTH_ID', '');
+writeVar('HEROKU_OAUTH_SECRET', '');
+
+function secret() {
+  return require('crypto').randomBytes(64).toString('hex');
+}
+
+function writeVar(varName, value) {
+  console.log('Adding ' + varName);
+  return fs.appendFileSync('.env', varName + '=' + value + '\n');
+}
+
+function writeSecret(secretName) {
+  return writeVar(secretName, secret());
+}
