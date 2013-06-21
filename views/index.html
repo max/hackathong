@@ -1,10 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>Hackathong</title>
 
-<html>
-<head>
-  <title>hack hack hack</title>
-</head>
+    <link rel="stylesheet" href="/stylesheets/vendor/normalize.css">
+  </head>
 
-<body>
-</body>
+  <body>
+    <h1>My Apps</h1>
+
+    <ul ng-controller="AppListCtrl">
+      <li ng-repeat="app in apps">{{app.name}}</li>
+    </ul>
+  </body>
+
+  <script src="/javascripts/vendor/angular.js"></script>
+  <script src="/javascripts/app.js"></script>
 </html>
