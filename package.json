@@ -1,0 +1,14 @@
+{
+  "name": "hackathong",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "coffee-script": "~1.6.2",
+    "express": "~3.2.5",
+    "oauth": "~0.9.10"
+  },
+  "engines": {
+    "node": "0.10.9",
+    "npm": "1.2.24"
+  }
+}
