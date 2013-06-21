@@ -1,15 +1,15 @@
 https = require 'https'
 
-class Heroku
+class Proxy
   constructor: (@key, @req) ->
 
   ['get', 'post', 'put', 'delete'].forEach (method) ->
-    Heroku::[method] = (path, options = {}, callback) ->
+    Proxy::[method] = (path, options = {}, callback) ->
       @request method.toUpperCase(), path, options, callback
 
   request: (method, path, {hostname, query, headers, version} = {}, callback) ->
     headers || (headers = {})
-    headers['User-Agent'] = 'dashboard-express/0.0.1'
+    headers['User-Agent'] = 'hackathong/0.0.1'
     headers['Accept'] = "application/vnd.heroku+json; version=#{version || 3}"
 
     options =
@@ -31,4 +31,4 @@ class Heroku
     req.end()
 
 exports.init = (key, req) ->
-  new Heroku(key, req)
+  new Proxy(key, req)

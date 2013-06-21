@@ -34,10 +34,10 @@ app.post    '/api/*', api.api
 app.put     '/api/*', api.api
 app.delete  '/api/*', api.api
 
-app.get '/login', (req, res) -> res.redirect '/auth/heroku'
+app.get '/login', (req, res) -> res.redirect "/auth/#{process.env.OAUTH_PROVIDER_NAME}"
 app.get '/logout', bouncer.logout
-app.get '/auth/heroku', bouncer.authenticate
-app.get '/auth/heroku/callback', bouncer.callback
+app.get "/auth/#{process.env.OAUTH_PROVIDER_NAME}", bouncer.authenticate
+app.get "/auth/#{process.env.OAUTH_PROVIDER_NAME}/callback", bouncer.callback
 
 http.createServer(app).listen app.get('port'), ->
   console.log "Express server listening on port #{app.get('port')}"
