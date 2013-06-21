@@ -4,16 +4,19 @@
     <title>Hackathong</title>
 
     <link rel="stylesheet" href="/stylesheets/vendor/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
   </head>
 
   <body>
-    <h1>My Apps</h1>
+    <div class="wrapper">
+      <h1>My Apps</h1>
 
-    <input ng-model="query">
+      <input ng-model="query">
 
-    <ul ng-controller="AppListCtrl">
-      <li ng-repeat="app in apps | filter:query">{{app.name}}</li>
-    </ul>
+      <ul ng-controller="AppListCtrl">
+        <li ng-repeat="app in apps | filter:query">{{ app.name }}</li>
+      </ul>
+    </div>
   </body>
 
   <script src="/javascripts/vendor/angular.js"></script>
