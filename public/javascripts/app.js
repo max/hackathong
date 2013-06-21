@@ -1,5 +1,5 @@
-function AppListCtrl($scope, $http) {
-  $http.get('api/apps').success(function(data) {
-    $scope.apps = data;
-  });
+angular.module('hackathong',['apiServices']);
+
+function AppListCtrl($scope, Apps) {
+  $scope.apps = Apps.query();
 }
